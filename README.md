@@ -7,7 +7,7 @@ The std packages of Go do currently not included detection for leaks. go-leak is
 If you want to know if a function is leaking goroutines:
 
 ```go
-leaks := leak.GoRoutineLeaks(foo())
+leaks := leak.GoRoutineLeaks(foo)
 
 if leaks > 0 {
 	panic("foo is leaking!")
@@ -34,7 +34,7 @@ if leaks > 0 {
 If you want to know if a function is leaking memory:
 
 ```go
-leaks := leak.MemoryLeaks(foo())
+leaks := leak.MemoryLeaks(foo)
 
 if leaks > 0 {
 	panic("foo is leaking!")
