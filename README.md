@@ -1,4 +1,56 @@
-go-leak
-=======
+# go-leak
 
-Detect all kind of leaks in Go
+The std packages of Go does currently not included detection for leaks. go-leak is a package which should help you find leaks in your code. If you have any ideas on how to improve this package or have problems of any kind with it, please [submit an issue](/issues/new) through the [issue tracker](/issues).
+
+## goroutines
+
+If you want to know if a function is leaking goroutines:
+
+```go
+leaks := leak.GoRoutineLeaks(foo())
+
+if leaks > 0 {
+	panic("foo is leaking!")
+}
+```
+
+If you want to know if a code is leaking goroutines:
+
+```go
+m := MarkGoRoutines()
+
+// some code
+
+leaks := m.Release()
+
+if leaks > 0 {
+	panic("some code is leaking!")
+}
+```
+
+
+## memory
+
+If you want to know if a function is leaking memory:
+
+```go
+leaks := leak.MemoryLeaks(foo())
+
+if leaks > 0 {
+	panic("foo is leaking!")
+}
+```
+
+If you want to know if a code is leaking memory:
+
+```go
+m := MarkMemory()
+
+// some code
+
+leaks := m.Release()
+
+if leaks > 0 {
+	panic("some code is leaking!")
+}
+```
