@@ -54,3 +54,5 @@ if leaks > 0 {
 	panic("some code is leaking!")
 }
 ```
+
+> **Note:** Since Go is scoped it is important to avoid new variables which are in the same scope as the markers.

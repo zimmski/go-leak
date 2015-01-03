@@ -28,6 +28,26 @@ func TestMemoryLeaks(t *testing.T) {
 	assert.Equal(t, 0, leaks)
 }
 
+func TestMemoryLeaksGoroutine(t *testing.T) {
+	leaks := MemoryLeaks(func() {
+		ch := func() chan bool {
+			ch := make(chan bool)
+
+			go func() {
+				ch <- true
+
+				close(ch)
+			}()
+
+			return ch
+		}()
+
+		<-ch
+	})
+
+	assert.Equal(t, 0, leaks)
+}
+
 var leaking *MemoryLeaker
 
 func TestMemoryMark(t *testing.T) {
