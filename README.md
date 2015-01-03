@@ -1,4 +1,4 @@
-# go-leak
+# go-leak [![GoDoc](https://godoc.org/github.com/zimmski/go-leak?status.png)](https://godoc.org/github.com/zimmski/go-leak)
 
 The std packages of Go do currently not included detection for leaks. go-leak is a package which should help you find leaks in your code. If you have any ideas on how to improve this package or have problems of any kind with it, please [submit an issue](https://github.com/zimmski/go-leak/issues/new) through the [issue tracker](https://github.com/zimmski/go-leak/issues).
 
